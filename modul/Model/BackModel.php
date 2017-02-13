@@ -16,4 +16,8 @@ class BackModel extends BaseModel
         $query = "UPDATE style set `background_color` = '{$color}' where id = 1";
         return $this->db->execute($query);
     }
+    public function reboot()
+    {
+        header("Location: http://localhost/admin/style");
+    }
 }

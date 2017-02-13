@@ -139,18 +139,47 @@
         .tov {
             background-color: #3C763D;
         }
-        .col-sm-8 {
+        <?php foreach ($data['backcolor'] as $value){
+            $color = array_shift($value);
+            if ($color == 'white') {
+            echo "
+            .col-sm-8 {
             background-color: white;
             border-radius: 15px;
-            border: 3px;
-        }
+            border: 3px;}";
+            } elseif ($color == 'black') {
+            echo "
+            .col-sm-8 {
+            background-color: black;
+            border-radius: 15px;
+            border: 3px;}";
+            }elseif ($color == 'red') {
+            echo "
+            .col-sm-8 {
+            background-color: red;
+            border-radius: 15px;
+            border: 3px;}";
+            }elseif ($color == 'green') {
+            echo "
+            .col-sm-8 {
+            background-color: green;
+            border-radius: 15px;
+            border: 3px;}";
+            }elseif ($color == 'grey') {
+            echo "
+            .col-sm-8 {
+            background-color: grey;
+            border-radius: 15px;
+            border: 3px;}";
+            }
+        } ?>
     </style>
     <base href="/">
 </head>
 <body>
-<div style="width: 100%";>
+<div style="width: 100%">
 
-<?php foreach ($data['headcolor'] as $value){$color = array_shift($value); if ($color == 'white') {echo "<nav class=\"navbar navbar-inverse navbar-fixed-top\">"; } elseif ($color == 'black') {echo "<nav class=\"navbar navbar-default navbar-fixed-top\">";}} ?>
+<?php foreach ($data['headcolor'] as $value){$color = array_shift($value); if ($color == 'white') {echo "<nav class=\"navbar navbar-default navbar-fixed-top\">";} elseif ($color == 'black') {echo "<nav class=\"navbar navbar-inverse navbar-fixed-top\">";}} ?>
 
     <div class="container">
         <div class="navbar-header">
@@ -197,15 +226,10 @@
 <br>
 <br>
 
-<div align="justify" class="row" style="background-color:<?php foreach ($data['back'] as $value) {
-    if($value['is_active']==1){
-        echo $value['back_color'];
-    }
-} ?>">
+<div align="justify" class="" style="">
 
     <div class="col-sm-2">
-        <?php
-        foreach ($data['ad'] as $i){
+        <?php foreach ($data['ad'] as $i):
             if ($i['Side'] == 'Left'){
                 echo "<div class=\"thumbnail\">
           <div class=\"caption\">
@@ -219,7 +243,8 @@
                 <div class='cupon'>
                     <?php echo "Купон на скидку: " . $data['random'] . " примените и получите скидку 10%"; ?>
                 </div>
-                <?php echo "</div></div>";}}?>
+                <?php echo "</div></div>";}?>
+        <?php endforeach;?>
     </div>
 
 
@@ -260,7 +285,7 @@
     </div>
     <div class="col-sm-2">
         <?php
-        foreach ($data['ad'] as $i){
+        foreach ($data['ad'] as $i):
             if ($i['Side'] == 'Right'){
                 echo "<div class=\"thumbnail\">
           <div class=\"caption\">
@@ -274,7 +299,8 @@
                 <div class='cupon'>
                     <?php echo "Купон на скидку: " . $data['random'] . " примените и получите скидку 10%"; ?>
                 </div>
-                <?php echo "</div></div>";}}?>
+                <?php echo "</div></div>";}?>
+        <?php endforeach;?>
     </div>
 </div>
 </div>

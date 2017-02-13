@@ -13,9 +13,11 @@ class HeadModel extends BaseModel
 
     public function saveSelected($color)
     {
-        /*$query = "UPDATE style set `head_color` = '0'";
-        $this->db->execute($query);*/
-        $query = " UPDATE style set `head_color` = '{$color}' where id = 1";
+        $query = "UPDATE style set `head_color` = '{$color}' where id = 1";
         return $this->db->execute($query);
+    }
+    public function reboot()
+    {
+        header("Location: http://localhost/admin/style");
     }
 }

@@ -84,10 +84,12 @@ class AdminController extends BaseController
 
         if(isset($_POST['head'])){
             $headModel->saveSelected($_POST['head']);
+            $headModel->reboot();
         }
         elseif(isset($_POST['back']))
         {
             $backModel->saveSelected($_POST['back']);
+            $backModel->reboot();
         }
         $this->render('style');
     }

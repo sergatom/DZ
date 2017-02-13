@@ -9,7 +9,6 @@ class SearchController extends BaseController
     protected $name = 'Search';
 
     public function search(){
-        $this->render("search");
+        $this->render("Search");
     }
-
 }
